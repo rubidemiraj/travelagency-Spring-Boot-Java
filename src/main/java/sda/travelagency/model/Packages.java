@@ -32,6 +32,7 @@ public class Packages {
     @Column(name = "HotelName")
     private String hotelName;
 
+
     @Column(name = "IndividualTrip")
     private boolean individual;
 
