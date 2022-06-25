@@ -1,18 +1,21 @@
 package sda.travelagency.Service;
 
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sda.travelagency.model.Package;
 import sda.travelagency.model.Reservations;
+import sda.travelagency.model.Shtet;
+import sda.travelagency.repository.PackagesRepository;
 import sda.travelagency.repository.ReservationsRepository;
+import sda.travelagency.repository.ShtetetRepository;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class ReservationsService implements IReservationsService{
 
-
+    @Autowired
     private ReservationsRepository reservationsRepository;
 
     @Override
@@ -32,7 +35,7 @@ public class ReservationsService implements IReservationsService{
         if (optional.isPresent()) {
             reservation = optional.get();
         } else {
-            throw new RuntimeException("Resevation not found :: " + id);
+            throw new RuntimeException(" Rezervimi nuk u gjet :: " + id);
         }
         return reservation;
     }
