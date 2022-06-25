@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class States {
+public class Shtet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "StateId")

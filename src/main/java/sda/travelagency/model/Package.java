@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Packages {
+public class Package {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PackageId")
