@@ -5,11 +5,18 @@
 
 <body>
 <div th:replace="fragments/client/navigation :: navigation"></div>
-<h4>Hello app</h4>
+<div th:replace="fragments/client/aboutpresentation :: aboutpresentation"></div>
+<div th:replace="fragments/client/aboutpresentation1 :: aboutpresentation1"></div>
+<div th:replace="fragments/client/aboutpresentation2 :: aboutpresentation2"></div>
+<div th:replace="fragments/client/aboutpresentation3 :: aboutpresentation3"></div>
 
-<div th:replace="fragments/client/loader :: loader"></div>
+<div th:replace="fragments/client/footer :: footer"></div>
 <div th:replace="fragments/client/scripts :: scripts"></div>
 
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+    <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
+</div>
 </body>
 
 </html>
