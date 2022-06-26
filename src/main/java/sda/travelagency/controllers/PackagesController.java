@@ -4,24 +4,28 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import sda.travelagency.Service.PackagesService;
 import sda.travelagency.model.Package;
 
 @Controller
 @AllArgsConstructor
 public class PackagesController {
+    @RequestMapping("/paketat")
+    public String index() {
+        return "home/paketat";
+    }
+
+
+    @RequestMapping("/detajet")
+    public String detajet() {
+        return "home/detajet";
+    }
 
 
     private PackagesService packagesService;
 
-    @GetMapping("/")
-    public String viewHomePage(Model model) {
-        return "home/index";
-    }
+
 
     @GetMapping("/showNewPackageForm")
     public String showNewPackageForm(Model model) {
@@ -30,6 +34,9 @@ public class PackagesController {
         model.addAttribute("package", pakete);
         return "new_package";
     }
+
+
+
 
     @PostMapping("/savePackage")
     public String savePackage(@ModelAttribute("pakete") Package pakete) {
