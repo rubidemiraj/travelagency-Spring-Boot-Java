@@ -1,5 +1,6 @@
 package sda.travelagency.controllers;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,9 +12,10 @@ import sda.travelagency.Service.PackagesService;
 import sda.travelagency.model.Package;
 
 @Controller
+@AllArgsConstructor
 public class PackagesController {
 
-    @Autowired
+
     private PackagesService packagesService;
 
     @GetMapping("/")
