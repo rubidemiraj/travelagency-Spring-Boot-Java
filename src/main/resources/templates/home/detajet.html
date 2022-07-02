@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/client/head :: head"></head>
+<body>
+<div th:replace="fragments/client/navigation :: navigation"></div>
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('client/images/bg_1.jpg');">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-center">
+      <div class="col-md-9 ftco-animate pb-5 text-center">
+        <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Titulli i paketes<i class="fa fa-chevron-right"></i></a></span> <span>Paketa<i class="fa fa-chevron-right"></i></span></p>
+        <h1 class="mb-0 bread">Paketa EMRI</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ftco-section ftco-no-pb contact-section mb-4">
+  <div class="container">
+    <div class="row d-flex contact-info">
+      <div class="col-md-6 d-flex">
+        <ul>
+          <li>
+            <div class="align-self-stretch box p-4 text-center">
+              <div class="icon d-flex align-items-center justify-content-center">
+                <span class="fa fa-info"></span>
+              </div>
+              <h3 class="mb-2">Pershkrimi</h3>
+              <p>PERSHKRIMI
+                ► Nisja nga Tirana oren 06:00 .
+
+                ► Nisja nga Durresi ne oren 06:30.
+
+                Vazhdimi i udhetimit drejt qytetit te Sarandes, Ndalese gjate rruges per kafe. Me pas do te bejme ndalese per vizite  ne qytetin  historit te Gjirokastres. Pas vizites ne Gjirokaster nisemi drejt qytetit te Sarandes. Akomodimi ne hotel.  Shfrytezimi i faciliteteve te hotelit. Pasdite e lire, Darka ne hotel. Pas darkes mbremja e lire.
+               </p>
+            </div>
+          </li>
+
+
+        </ul>
+
+
+      </div>
+      <div class="col-md-6 d-flex">
+        <form action="#" class="bg-light p-5 contact-form">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Emri">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Mbiemri">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Numer Kontakti">
+          </div>
+          <div class="form-group">
+            <label for="noAdults">Te rritur</label>
+            <input type="number" id="noAdults" name="noAdults" >
+          </div>
+          <div class="form-group">
+
+              <labels for="noChildren">Femije</labels>
+              <input type="noChildren" id="noChildren" name="noChildren" >
+
+
+
+          </div>
+
+          <div class="form-group">
+            <input type="submit" value="Rezervo" class="btn btn-primary py-3 px-5">
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<div th:replace="fragments/client/footer :: footer"></div>
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<div th:replace="fragments/client/scripts :: scripts"></div>
+
+</body>
+</html>
