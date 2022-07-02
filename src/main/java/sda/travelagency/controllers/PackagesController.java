@@ -26,16 +26,13 @@ public class PackagesController {
     private PackagesService packagesService;
 
 
-
     @GetMapping("/showNewPackageForm")
     public String showNewPackageForm(Model model) {
         // create model attribute to bind form data
-        Package pakete= new Package();
+        Package pakete = new Package();
         model.addAttribute("package", pakete);
         return "new_package";
     }
-
-
 
 
     @PostMapping("/savePackage")
@@ -46,10 +43,10 @@ public class PackagesController {
     }
 
     @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable( value = "id") long id, Model model) {
+    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 
         // get employee from the service
-       Package pakete = packagesService.getPackageById(id);
+        Package pakete = packagesService.getPackageById(id);
 
         // set employee as a model attribute to pre-populate the form
         model.addAttribute("pakete", pakete);
@@ -57,13 +54,14 @@ public class PackagesController {
     }
 
     @GetMapping("/deletePackage/{id}")
-    public String deletePackage(@PathVariable (value = "id") long id) {
+    public String deletePackage(@PathVariable(value = "id") long id) {
 
         // call delete employee method
         this.packagesService.deletePackageById(id);
         return "redirect:/";
     }
 
+}
 
 //    @GetMapping("/page/{pageNo}")
 //    public String findPaginated(@PathVariable (value = "pageNo") int pageNo,
@@ -87,4 +85,4 @@ public class PackagesController {
 //        return "index";
 //    }
 
-}
+
