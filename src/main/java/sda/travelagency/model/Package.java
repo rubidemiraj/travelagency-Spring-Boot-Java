@@ -1,43 +1,61 @@
 package sda.travelagency.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+import sda.travelagency.enums.PackageType;
 
 import javax.persistence.*;
+import java.util.UUID;
 
-@Table
-@Entity(name = "PACKAGES")
 @Data
+@Builder
+@Entity
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@Table(name = "ta_package")
 public class Package {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "PackageId")
-    private Long packageid;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @Column(name = "id", updatable = false, nullable = false)
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    private UUID id;
 
-    @Column(name = "DepartureTime")
+    @Column(name = "departure_time")
     private String departureTime;
 
-    @Column(name = "ReturnTime")
+    @Column(name = "return_time")
     private String returnTime;
 
-    @Column(name = "DescriptionPack")
-    private String descriptionPack;
+    @Column(name = "title")
+    private String title;
 
-    @Column(name = "HotelName")
-    private String hotelName;
+    @Column(name = "description")
+    private String description;
 
+    @Column(name = "price")
+    private Float price;
 
-    @Column(name = "IndividualTrip")
-    private boolean individual;
+    @Column(name = "duration")
+    private Integer duration;
 
-    @Column(name = "GuideTrip")
-    private boolean guideTrip;
+    @Column(name = "image_src", columnDefinition = "TEXT")
+    private String imageSrc;
 
+    @Column(name = "location")
+    private String location;
 
+    @Column(name = "package_type")
+    @Enumerated(EnumType.STRING)
+    protected PackageType packageType;
+
+    @Column(name = "country_id")
+    private String countryId;
+
+    @ManyToOne
+    @JoinColumn(name = "country_id", updatable = false, insertable = false)
+    private Country country;
 }

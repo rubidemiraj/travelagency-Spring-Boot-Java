@@ -1,24 +1,27 @@
 package sda.travelagency.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.UUID;
 
-@Table
-@Entity(name = "STATES")
 @Data
+@Builder
+@Entity
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+@Table(name = "ta_country")
 public class Country {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "StateId")
-    private Long stateId;
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name="uuid2", strategy = "uuid2")
+    @Column(name = "id", updatable = false, nullable = false)
+    @Type(type = "org.hibernate.type.UUIDCharType")
+    private UUID id;
 
-    @Column(name = "StateName")
-    private String stateName;
+    @Column(name = "title")
+    private String title;
 }

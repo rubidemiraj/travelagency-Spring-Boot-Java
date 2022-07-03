@@ -1,4 +1,4 @@
-package sda.travelagency.Service;
+package sda.travelagency.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,6 +7,7 @@ import sda.travelagency.repository.CountryRepository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -26,8 +27,8 @@ public class CountryService implements ICountryService {
     }
 
     @Override
-    public Country getCountryById(long id) {
-        Optional<Country> optional = countryRepository.findById(id);
+    public Country getCountryById(String id) {
+        Optional<Country> optional = countryRepository.findById(UUID.fromString(id));
         Country country = null;
         if (optional.isPresent()) {
             country = optional.get();
@@ -38,7 +39,7 @@ public class CountryService implements ICountryService {
     }
 
     @Override
-    public void deleteCountryById(long id) {
-        this.countryRepository.deleteById(id);
+    public void deleteCountryById(String id) {
+        this.countryRepository.deleteById(UUID.fromString(id));
     }
 }

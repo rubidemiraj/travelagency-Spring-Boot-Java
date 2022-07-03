@@ -5,10 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import sda.travelagency.Service.CountryService;
-import sda.travelagency.Service.PackagesService;
+import sda.travelagency.service.CountryService;
 import sda.travelagency.model.Country;
-import sda.travelagency.model.Package;
 
 public class CountryController {
     private CountryService countryService;
@@ -34,7 +32,7 @@ public class CountryController {
     }
 
     @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable( value = "id") long id, Model model) {
+    public String showFormForUpdate(@PathVariable( value = "id") String id, Model model) {
 
         // get employee from the service
         Country country = countryService.getCountryById(id);
@@ -45,7 +43,7 @@ public class CountryController {
     }
 
     @GetMapping("/deleteCountry/{id}")
-    public String deleteCountry(@PathVariable (value = "id") long id) {
+    public String deleteCountry(@PathVariable (value = "id") String id) {
 
         // call delete employee method
         this.countryService.deleteCountryById(id);

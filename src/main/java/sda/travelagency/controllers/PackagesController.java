@@ -1,30 +1,35 @@
 package sda.travelagency.controllers;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import sda.travelagency.Service.PackagesService;
+import sda.travelagency.model.Reservation;
+import sda.travelagency.service.IPackagesService;
+import sda.travelagency.service.PackagesService;
+import sda.travelagency.dto.PackageFilter;
 import sda.travelagency.model.Package;
 
 @Controller
 @AllArgsConstructor
+@CrossOrigin(origins = "*",allowedHeaders = "*")
 public class PackagesController {
+    protected IPackagesService packagesService;
+
     @RequestMapping("/paketat")
-    public String index() {
+    public String index(@ModelAttribute PackageFilter filter, ModelMap map) {
+        map.put("filter", filter);
+        map.put("packages", packagesService.filter(filter));
         return "home/paketat";
     }
 
-
-    @RequestMapping("/detajet")
-    public String detajet() {
+    @RequestMapping("/detajet/{id}")
+    public String findPackageById(@PathVariable String id, ModelMap map) {
+        map.put("package", packagesService.getPackageById(id));
+        map.put("reservation", new Reservation());
         return "home/detajet";
     }
-
-
-    private PackagesService packagesService;
-
 
     @GetMapping("/showNewPackageForm")
     public String showNewPackageForm(Model model) {
@@ -34,7 +39,6 @@ public class PackagesController {
         return "new_package";
     }
 
-
     @PostMapping("/savePackage")
     public String savePackage(@ModelAttribute("pakete") Package pakete) {
         // save employee to database
@@ -43,7 +47,7 @@ public class PackagesController {
     }
 
     @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
+    public String showFormForUpdate(@PathVariable(value = "id") String id, Model model) {
 
         // get employee from the service
         Package pakete = packagesService.getPackageById(id);
@@ -54,7 +58,7 @@ public class PackagesController {
     }
 
     @GetMapping("/deletePackage/{id}")
-    public String deletePackage(@PathVariable(value = "id") long id) {
+    public String deletePackage(@PathVariable(value = "id") String id) {
 
         // call delete employee method
         this.packagesService.deletePackageById(id);
@@ -62,27 +66,4 @@ public class PackagesController {
     }
 
 }
-
-//    @GetMapping("/page/{pageNo}")
-//    public String findPaginated(@PathVariable (value = "pageNo") int pageNo,
-//                                @RequestParam("sortField") String sortField,
-//                                @RequestParam("sortDir") String sortDir,
-//                                Model model) {
-//        int pageSize = 5;
-//
-//        Page<Employee> page = employeeService.findPaginated(pageNo, pageSize, sortField, sortDir);
-//        List<Employee> listEmployees = page.getContent();
-//
-//        model.addAttribute("currentPage", pageNo);
-//        model.addAttribute("totalPages", page.getTotalPages());
-//        model.addAttribute("totalItems", page.getTotalElements());
-//
-//        model.addAttribute("sortField", sortField);
-//        model.addAttribute("sortDir", sortDir);
-//        model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
-//
-//        model.addAttribute("listEmployees", listEmployees);
-//        return "index";
-//    }
-
 

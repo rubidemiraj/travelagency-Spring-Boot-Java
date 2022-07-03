@@ -1,4 +1,4 @@
-package sda.travelagency.Service;
+package sda.travelagency.service;
 
 import sda.travelagency.model.Country;
 
@@ -8,7 +8,7 @@ public interface ICountryService {
 
     List<Country> getAllCountry();
     void saveCountry(Country country);
-    Country getCountryById(long id);
-    void deleteCountryById(long id);
+    Country getCountryById(String id);
+    void deleteCountryById(String id);
 
 }
