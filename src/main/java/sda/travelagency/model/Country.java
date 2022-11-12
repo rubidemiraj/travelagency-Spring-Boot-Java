@@ -22,6 +22,8 @@ public class Country {
     @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
 
+
+
     @Column(name = "title")
     private String title;
 }

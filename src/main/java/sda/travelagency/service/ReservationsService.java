@@ -62,6 +62,7 @@ public class ReservationsService implements IReservationsService{
         if (StringUtils.isEmpty(model.getEmail()))
             return ServiceResponse.error("Email eshte i kerkuar!");
 
+
         if (StringUtils.isEmpty(model.getPhone()))
             return ServiceResponse.error("Kontrakti telefoni eshte i kerkuar!");
 

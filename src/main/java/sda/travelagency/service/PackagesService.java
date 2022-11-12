@@ -163,21 +163,67 @@ public class PackagesService implements IPackagesService {
             packagesRepository.save(p);
             karaburun = Optional.ofNullable(p);
         }
-        Optional<Package> dhermi  = packagesRepository.findByTitle("DHERMI");
-        if (dhermi.isEmpty()) {
+        Optional<Package> puglia  = packagesRepository.findByTitle("PUGLIA");
+        if (puglia.isEmpty()) {
             Package p = Package.builder()
                     .departureTime("16/07/2022")
                     .returnTime("19/07/2022")
-                    .title("DHERMI")
+                    .title("PUGLIA")
                     .description("")
                     .price(300f)
                     .duration(3)
                     .imageSrc("")
-                    .location(" Gjiri i Grames, Shpella Pirateve")
+                    .location(" PUGLIA,ITALY")
+                    .build();
+            packagesRepository.save(p);
+            puglia = Optional.ofNullable(p);
+        }
+        Optional<Package> zante = packagesRepository.findByTitle("Zankithos");
+        if (zante.isEmpty()) {
+            Package p = Package.builder()
+                    .departureTime("06/07/2022")
+                    .returnTime("12/07/2022")
+                    .title("Zankithos")
+                    .description("")
+                    .price(210f)
+                    .duration(7)
+                    .imageSrc("")
+                    .location(" Zankithos,Grecce")
+                    .build();
+            packagesRepository.save(p);
+            zante = Optional.ofNullable(p);
+        }
+        Optional<Package> firence = packagesRepository.findByTitle("Firence");
+        if (firence.isEmpty()) {
+            Package p = Package.builder()
+                    .departureTime("06/07/2022")
+                    .returnTime("10/07/2022")
+                    .title("Firence")
+                    .description("")
+                    .price(180f)
+                    .duration(5)
+                    .imageSrc("")
+                    .location(" Firence,Italy")
+                    .build();
+            packagesRepository.save(p);
+            firence = Optional.ofNullable(p);
+        }
+        Optional<Package> dhermi = packagesRepository.findByTitle("DHERMI");
+        if (dhermi.isEmpty()) {
+            Package p = Package.builder()
+                    .departureTime("06/07/2022")
+                    .returnTime("10/07/2022")
+                    .title("DHERMI")
+                    .description("")
+                    .price(200f)
+                    .duration(5)
+                    .imageSrc("")
+                    .location(" DHERMI")
                     .build();
             packagesRepository.save(p);
             dhermi = Optional.ofNullable(p);
         }
+
 
     }
 }

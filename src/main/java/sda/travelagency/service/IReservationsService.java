@@ -13,4 +13,5 @@ public interface IReservationsService {
     void deleteReservationById(String id);
     ServiceResponse book(Reservation model);
     float calculateTotalPrice(Reservation model);
+
 }
